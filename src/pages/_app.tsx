@@ -1,4 +1,5 @@
 import GlobalStyles from '@/styles/global'
+import Theme from '@/styles/theme'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 
@@ -14,8 +15,10 @@ export default function App({ Component, pageProps }: AppProps) {
           content="A simple project to show my favorite spots in the world!"
         ></meta>
       </Head>
-      <GlobalStyles />
-      <Component {...pageProps} />
+      <Theme>
+        <GlobalStyles />
+        <Component {...pageProps} />
+      </Theme>
     </>
   )
 }
