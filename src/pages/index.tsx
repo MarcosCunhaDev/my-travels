@@ -1,8 +1,8 @@
-import { Main } from '@/components/Main'
 import React from 'react'
+import DynamicMap from '@/components/Map/dynamicMap'
 
 function Home() {
-  return <Main />
+  return <DynamicMap />
 }
 
 export default Home
