@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic'
 import React, { useMemo } from 'react'
 
-function DynamicMap() {
+function DynamicMap({ places }: { places?: any }) {
   const Map = useMemo(
     () =>
       dynamic(() => import('@/components/Map'), {
@@ -11,7 +11,7 @@ function DynamicMap() {
     []
   )
 
-  return <Map />
+  return <Map places={places} />
 }
 
 export default DynamicMap
