@@ -1,5 +1,7 @@
 import React from 'react'
 import DynamicMap from '@/components/Map/dynamicMap'
+import { InfoOutline } from '@styled-icons/evaicons-outline'
+import LinkWrapper from '@/components/LinkWrapper'
 
 const place = {
   id: '1',
@@ -9,7 +11,14 @@ const place = {
 }
 
 function Home() {
-  return <DynamicMap places={[place]} />
+  return (
+    <>
+      <LinkWrapper href="/about">
+        <InfoOutline size={32} aria-label="about" />
+      </LinkWrapper>
+      <DynamicMap places={[place]} />
+    </>
+  )
 }
 
 export default Home
