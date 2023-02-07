@@ -4,7 +4,8 @@ import { ThemeProvider, DefaultTheme } from 'styled-components'
 const theme: DefaultTheme = {
   colors: {
     highlight: '#e20e8d',
-    background: '#030518'
+    background: '#030518',
+    white: '#FFFFFF'
   },
   fonts: ['sans-serif', 'Roboto'],
   fontSizes: {
