@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router'
 import React from 'react'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 
@@ -12,6 +13,8 @@ export interface MapProps {
 }
 
 function Map({ places }: MapProps) {
+  const router = useRouter()
+
   return (
     <MapContainer
       center={[51.505, -0.09]}
@@ -22,13 +25,19 @@ function Map({ places }: MapProps) {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      {places?.map(({ id, name, location }) => {
+      {places?.map(({ id, name, location, slug }) => {
         const { latitude, longitude } = location
         return (
           <Marker
             key={`place-${id}`}
             position={[latitude, longitude]}
             title={name}
+            eventHandlers={{
+              click: () => {
+                const href = `place/${slug}`
+                router.push(href)
+              }
+            }}
           >
             <Popup>
               A pretty CSS3 popup. <br /> Easily customizable.

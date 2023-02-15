@@ -29,9 +29,11 @@ function PlaceTemplate({ place }: PlaceTemplateProps) {
       <s.Body>
         <div dangerouslySetInnerHTML={{ __html: description.html }}></div>
       </s.Body>
-      {gallery.map((place, index) => {
-        return <img src={place.url} alt={name} key={`photo-${index}`} />
-      })}
+      {/* <div style={{ display: 'flex', position: 'relative', maxWidth: 400 }}>
+        {gallery.map((place, index) => {
+          return <img src={place.url} alt={name} key={`photo-${index}`} />
+        })}
+      </div> */}
     </s.Content>
   )
 }
