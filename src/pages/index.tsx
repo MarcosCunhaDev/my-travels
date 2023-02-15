@@ -1,24 +1,25 @@
+import HomeTemplate from './Home'
 import React from 'react'
-import DynamicMap from '@/components/Map/dynamicMap'
-import { InfoOutline } from '@styled-icons/evaicons-outline'
-import LinkWrapper from '@/components/LinkWrapper'
+import { MapProps } from '@/components/Map'
+import client from '@/graphql/client'
+import { GetStaticProps } from 'next'
+import { GET_ALL_PLACES } from '@/graphql/queries'
+import { GetPlacesQuery } from '@/graphql/generated/graphql'
 
-const place = {
-  id: '1',
-  name: 'Brasília',
-  slug: 'brasilia',
-  location: { latitude: -15.793889, longitude: -47.882778 }
+function Home({ places }: MapProps) {
+  return <HomeTemplate places={places} />
 }
 
-function Home() {
-  return (
-    <>
-      <LinkWrapper href="/about">
-        <InfoOutline size={32} aria-label="about" />
-      </LinkWrapper>
-      <DynamicMap places={[place]} />
-    </>
-  )
+export const getStaticProps: GetStaticProps = async () => {
+  const { places } = await client.request<GetPlacesQuery>(GET_ALL_PLACES)
+
+  if (!places.length) return { notFound: true }
+
+  return {
+    props: {
+      places
+    }
+  }
 }
 
 export default Home

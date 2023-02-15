@@ -7,7 +7,7 @@ interface Place {
   slug: string
   location: { latitude: number; longitude: number }
 }
-interface MapProps {
+export interface MapProps {
   places?: Place[]
 }
 
