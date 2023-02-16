@@ -9,6 +9,9 @@ const nextConfig = {
       // Enabled by default in development, disabled in production to reduce file size,
       // setting this will override the default for all environments.
     }
+  },
+  images: {
+    domains: ['media.graphassets.com']
   }
 }
 
